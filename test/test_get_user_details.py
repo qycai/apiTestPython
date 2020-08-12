@@ -4,8 +4,9 @@ import pytest
 base_url = "http://localhost:9090"
 
 
+# class名需要以Test开头
 class TestGetUserDetails:
-
+    # 测试名需要以test开头
     def test_get_user_details(self):
         api_path = "/api/getUserDetails"
         res = requests.get(url=base_url + api_path)
@@ -17,9 +18,11 @@ class TestGetUserDetails:
         assert response["age"] == 18
 
 
+# data driven，以元组的形式写测试数据
 name_age = [("connie", 11), ("qycai", 18)]
 
 
+# 解析测试数据
 @pytest.mark.parametrize("username, age", name_age)
 def test_get_user_details_by_name_and_age(username, age):
     api_path = "/api/getUserByNameAndAge"
