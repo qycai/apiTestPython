@@ -1,4 +1,5 @@
 import requests
+from requests.auth import HTTPBasicAuth
 
 base_url = "http://localhost:9090"
 
@@ -14,6 +15,11 @@ class TestAddUser:
 
     def test_add_user(self):
         api_path = "/api/addUserDetails"
-        res = requests.post(base_url + api_path, data=self.get_request_body_file())
+        cookies = {"session": "12345"}
+        # basic auth
+        auth = HTTPBasicAuth("qycai", "qycai123")
+        headers = {"Content-Type": "application/json; charset=UTF-8"}
+        res = requests.post(base_url + api_path, data=self.get_request_body_file(), cookies=cookies, auth=auth,
+                            headers=headers)
         status_code = res.status_code
         assert status_code == 200
