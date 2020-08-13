@@ -5,6 +5,7 @@ base_url = "http://localhost:9090"
 test_data = ["sanguo", "hongloumeng", "shuihu", "xiyouji"]
 
 
+@pytest.mark.booktest
 class TestGetBookDetails:
     @pytest.mark.parametrize("book_name", test_data)
     def test_get_book_details_by_path_para(self, book_name):

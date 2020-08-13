@@ -1,9 +1,11 @@
+import pytest
 import requests
 from requests.auth import HTTPBasicAuth
 
 base_url = "http://localhost:9090"
 
 
+@pytest.mark.usertest
 class TestAddUser:
     # body体存放在json文件，读取文件内容
     @staticmethod
